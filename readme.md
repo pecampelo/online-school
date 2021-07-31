@@ -6,9 +6,10 @@ do quizzes, access blog posts, have meetings through a video app and deliver fil
 
 TODO 
 [ ] Setup Server
-    [ ] Install Dependencies
-    [ ] Setup Express App
-    [ ] Setup Not Found and Error Middlewares
+    [x] Install Dependencies
+    [x] Setup Linter
+    [x] Setup Express App
+    [x ] Setup Not Found and Error Middlewares
 [ ] Model Database
     - What kind of data will we store? 
 [ ] Setup Mongoose Model
@@ -47,3 +48,26 @@ Pages
     [ ] Video Meeting Page
 [ ] Contact
 
+# Database
+* Student
+    * Username
+    * Password
+    * Full Name
+    * Job Title
+    * Gender
+    * Nationality
+    * Birthdate
+    * Billing Address
+    * Created at
+    * Last time on-line at
+    * Student Privileges
+    * Instructor Privileges
+    * Admin Privileges
+* Course
+    * Course Name
+    * Price
+    * Format
+    * Instructor
+    * Created at
+* Class
+    * Class Name
