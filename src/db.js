@@ -1,7 +1,11 @@
-const Sequelize = require('sequelize');
+const { Sequelize } = require('sequelize');
+const Student  = require('./models/student')
+const Instructor  = require('./models/instructor')
+const Course = require('./models/course')
+const Class  = require('./models/class')
+
 
 const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/postgres')
-
 const connectDatabase = async () => {
       try {
       await sequelize.authenticate();
@@ -11,4 +15,7 @@ const connectDatabase = async () => {
     }
 }
 
-module.exports = { connectDatabase };
+
+module.exports = { 
+  connectDatabase 
+};

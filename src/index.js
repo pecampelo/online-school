@@ -4,11 +4,11 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const db = require('./db');
+
 require('dotenv').config({ path:'./.env'});
-
-
 const middlewares = require('./middlewares');
 const logs = require('./api/logs');
+
 
 app.use(express.json());
 app.use(morgan('common')); // logs for debugging
