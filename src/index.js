@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const db = require('./db');
 require('dotenv').config({ path:'./.env'});
 
 
@@ -17,12 +17,9 @@ app.use(cors({
     origin: process.env.CORS_ORIGIN,
 }));
 
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true, 
-  useUnifiedTopology: true
-});
-
 // configure database connection
+db.connectDatabase();
+
 
 app.get('/', (req, res) => {
     res.json({
