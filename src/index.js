@@ -3,17 +3,26 @@ const app = express();
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
+const mongoose = require('mongoose');
+require('dotenv').config({ path:'./.env'});
+
 
 const middlewares = require('./middlewares');
-
-const port = process.env.PORT || 7001;
+const logs = require('./api/logs');
 
 app.use(express.json());
 app.use(morgan('common')); // logs for debugging
 app.use(helmet());
 app.use(cors({
-    origin: 'http://localhost:6001',
+    origin: process.env.CORS_ORIGIN,
 }));
+
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true, 
+  useUnifiedTopology: true
+});
+
+// configure database connection
 
 app.get('/', (req, res) => {
     res.json({
@@ -21,22 +30,14 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use('/api/logs', logs);
+
 app.use(middlewares.notFoundHandler);
 app.use(middlewares.errorHandler);
+
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}/`);
 });
 
-app.post('/:user', (req, res) => {
-  const { user } = req.params;
-  const { email } = req.body;
-
-  if (!email) {
-    res.status(418).send({ message: 'We need your e-mail' });
-  }
-
-  res.send({
-    user: `${user}'s email is ${email}`,
-  });
-});
