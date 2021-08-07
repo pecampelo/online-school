@@ -6,7 +6,7 @@ do quizzes, access blog posts, have meetings through a video app and deliver fil
 
 TODO 
 - [x] Setup Server
-    [x] Install Dependencies
+- [x] Install Dependencies
    [x] Setup Linter
     [x] Setup Express App
     [x] Setup Not Found and Error Middlewares
